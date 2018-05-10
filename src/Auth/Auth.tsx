@@ -2,7 +2,7 @@ import { WebAuth, Auth0UserProfile, Auth0Error, Auth0DecodedHash } from 'auth0-j
 import { AUTH_CONFIG } from './auth0-variables';
 
 class Auth {
-  tokenRenewalTimeout: NodeJS.Timer;
+  tokenRenewalTimeout: number;
   userProfile: Auth0UserProfile;
   auth0 = new WebAuth({
     ...AUTH_CONFIG,
@@ -112,7 +112,7 @@ class Auth {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '');
     const delay = expiresAt - Date.now();
     if (delay > 0) {
-      this.tokenRenewalTimeout = setTimeout(() => {
+      this.tokenRenewalTimeout = window.setTimeout(() => {
         this.renewToken();
       }, delay);
     }
