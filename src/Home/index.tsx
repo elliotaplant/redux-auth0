@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { AuthedRouteProps } from '../Auth/Auth';
 
-class Home extends Component <any> {
+class Home extends Component <AuthedRouteProps> {
   getExpiryDate() {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '');
     return JSON.stringify(new Date(expiresAt));
   }
   login = () => {
-     this.props.auth.login()
+     this.props.auth.login();
   }
   render() {
     const { isAuthenticated } = this.props.auth;

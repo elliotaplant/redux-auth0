@@ -1,11 +1,11 @@
 import React from 'react';
 import { Navbar, Button } from 'react-bootstrap';
-import { Route, RouteProps, Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import Home from './Home';
 import Profile from './Profile';
-import Auth from './Auth/Auth';
+import { AuthedRouteProps } from './Auth/Auth';
 
-class App extends React.Component<RouteProps & { auth: Auth }> {
+class App extends React.Component<AuthedRouteProps> {
 
   login = () => {
     this.props.auth.login();
@@ -16,6 +16,7 @@ class App extends React.Component<RouteProps & { auth: Auth }> {
   logOut = () => {
     this.props.auth.logout();
   }
+
   render() {
     const { isAuthenticated } = this.props.auth;
     return (

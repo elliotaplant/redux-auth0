@@ -1,5 +1,8 @@
 import { WebAuth, Auth0UserProfile, Auth0Error, Auth0DecodedHash } from 'auth0-js';
+import { RouteProps } from 'react-router-dom';
 import { AUTH_CONFIG } from './auth0-variables';
+
+export type AuthedRouteProps = RouteProps & { auth: Auth };
 
 class Auth {
   tokenRenewalTimeout: number;
