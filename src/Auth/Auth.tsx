@@ -18,14 +18,13 @@ class Auth {
   }
 
   handleAuthentication() {
-
     this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         location.href = '/home';
       } else if (err) {
-
         alert(`Error: ${err.error}. Check the console for further details.`);
+        location.href = '/home';
       }
     });
   }
@@ -111,6 +110,9 @@ class Auth {
     });
   }
 
+  // Automatically renew the token if the user is still on the page
+  // Will only work if you have set up a client id with your identity providers:
+  // https://auth0.com/docs/identityproviders
   scheduleRenewal() {
     const expiresAt = JSON.parse(localStorage.getItem('expires_at') || '');
     const delay = expiresAt - Date.now();

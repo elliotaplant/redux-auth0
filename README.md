@@ -26,6 +26,12 @@ If you download the sample from the quickstart page, it will come pre-populated 
 
 In order to make `checkSession` work, you need to add the URL where the authorization request originates from, to the Allowed Web Origins list of your Auth0 client in the Dashboard under your client's Settings.
 
+## Set up any Identity Providers
+
+In order to log in with Google, Facebook, etc. you'll have to connect them as [Identity Providers](https://auth0.com/docs/identityproviders) to Auth0. Follow those instructions for each provider you'll be using.
+
+Note that you'll still be able to log in to the app without setting this up, but you'll be using the Auth0 dev keys. The 'Renew Token' button won't work.
+
 ## Run the Application
 
 The development server that comes with create-react-app can be used to serve the application.
@@ -61,13 +67,13 @@ Auth0 helps you to:
 
 ## Create a Free Auth0 Account
 
-1. Go to [Auth0](https://auth0.com/signup) and click Sign Up.
-2. Use Google, GitHub or Microsoft Account to login.
+Go to [Auth0](https://auth0.com/signup) and click Sign Up.
 
 
 ## Author
 
-Suman Kunwar
+Elliot Plant
+Based on a repo by [Suman Kunwar](https://github.com/sumn2u/react-auth0-typescript)
 
 ## License
 
