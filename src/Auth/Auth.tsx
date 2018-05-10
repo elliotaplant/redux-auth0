@@ -1,17 +1,18 @@
 import auth0 from 'auth0-js';
 import { AUTH_CONFIG } from './auth0-variables';
- class Auth {
-  tokenRenewalTimeout:any;
-  userProfile:any;
-  cb:( error: any, result?: any ) =>void;
-  handleAuthRoute:any;
+
+class Auth {
+  tokenRenewalTimeout: number;
+  userProfile: any;
+  cb: (error: any, result?: any) => void;
+  handleAuthRoute: any;
   auth0 = new auth0.WebAuth({
     domain: AUTH_CONFIG.domain,
     clientID: AUTH_CONFIG.clientId,
-    redirectUri: `${AUTH_CONFIG.redirect_url}/callback`,
+    redirectUri: `${AUTH_CONFIG.redirectUrl}/callback`,
     responseType: 'token id_token',
     scope: 'openid profile',
-    audience:AUTH_CONFIG.audience
+    audience: AUTH_CONFIG.audience
   });
 
   login() {
@@ -20,7 +21,7 @@ import { AUTH_CONFIG } from './auth0-variables';
 
   handleAuthentication() {
 
-     this.auth0.parseHash((err, authResult) => {
+    this.auth0.parseHash((err, authResult) => {
       if (authResult && authResult.accessToken && authResult.idToken) {
         this.setSession(authResult);
         location.href = '/home'
@@ -31,7 +32,7 @@ import { AUTH_CONFIG } from './auth0-variables';
     });
   }
 
-  setSession(authResult:any) {
+  setSession(authResult: any) {
     // Set the time that the access token will expire at
     let expiresAt = JSON.stringify(
       authResult.expiresIn * 1000 + new Date().getTime()
@@ -56,7 +57,7 @@ import { AUTH_CONFIG } from './auth0-variables';
     return accessToken;
   }
 
-  getProfile = (cb:(err?:any, result?:any)=> void) => {
+  getProfile = (cb: (err?: any, result?: any) => void) => {
     let accessToken = this.getAccessToken();
     // let self = this;
     this.auth0.client.userInfo(accessToken, (err, profile) => {
@@ -77,7 +78,7 @@ import { AUTH_CONFIG } from './auth0-variables';
 
     clearTimeout(this.tokenRenewalTimeout);
     // logout use form the auth0
-     //location.href = `https://${AUTH_CONFIG.domain}/v2/logout?returnTo=${AUTH_CONFIG.redirect_url}/&client_id=${AUTH_CONFIG.clientId}`;
+    //location.href = `https://${AUTH_CONFIG.domain}/v2/logout?returnTo=${AUTH_CONFIG.redirectUrl}/&client_id=${AUTH_CONFIG.clientId}`;
     location.href = '/'
 
   }
@@ -92,7 +93,7 @@ import { AUTH_CONFIG } from './auth0-variables';
 
   renewToken() {
     this.auth0.checkSession({},
-      (err:any, result:any) => {
+      (err: any, result: any) => {
         if (err) {
           alert(
             `Could not get a new token (${err.error}: ${err.error_description}).`
@@ -115,11 +116,11 @@ import { AUTH_CONFIG } from './auth0-variables';
     }
   }
 
-  checkSSO(cb:(err?:any, result?:any)=> void) {
+  checkSSO(cb: (err?: any, result?: any) => void) {
     this.auth0.checkSession({},
-      (err:any, result:any) => {
-        if (err){
-         alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
+      (err: any, result: any) => {
+        if (err) {
+          alert(`Could not get a new token (${err.error}: ${err.error_description}).`);
         } else {
           this.setSession(result);
         }
