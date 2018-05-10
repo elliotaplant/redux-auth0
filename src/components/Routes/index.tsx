@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { RouteProps, Redirect, Route, Switch } from 'react-router-dom';
-import Callback from './Callback';
-import App from './App';
-import Auth from './Auth/Auth';
+import Callback from '../Callback';
+import App from '../../App';
+import Auth from '../../Auth';
 
+// This has to change. It should be in a saga
 const auth = new Auth();
 
 const handleAuthentication = (prop: RouteProps) => {
@@ -12,7 +13,7 @@ const handleAuthentication = (prop: RouteProps) => {
   }
 };
 
-const makeMainRoutes = () => (
+const Routes = () => (
   <Switch>
     <Route
       path="/"
@@ -42,4 +43,4 @@ const makeMainRoutes = () => (
   </Switch>
 );
 
-export default makeMainRoutes;
+export default Routes;
