@@ -5,10 +5,6 @@
   "author": "Suman Kunwar",
   "license": "MIT",
   "dependencies": {
-    "@types/auth0-js": "^8.11.1",
-    "@types/react-bootstrap": "^0.31.6",
-    "@types/react-router-redux": "^5.0.10",
-    "@types/redux-form": "^7.0.9",
     "auth0-js": "^9.0.2",
     "axios": "^0.17.0",
     "bootstrap": "^3.3.7",
@@ -36,6 +32,10 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/auth0-js": "^8.11.1",
+    "@types/react-bootstrap": "^0.31.6",
+    "@types/react-router-redux": "^5.0.10",
+    "@types/redux-form": "^7.0.9",
     "@types/enzyme": "^3.1.7",
     "@types/jest": "^21.1.5",
     "@types/node": "^8.0.50",
