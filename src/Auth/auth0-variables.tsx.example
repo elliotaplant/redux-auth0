@@ -2,5 +2,6 @@ export const AUTH_CONFIG = {
   domain: '{DOMAIN}',
   clientId: '{CLIENT_ID}',
   callbackUrl: 'http://localhost:3000/callback',
-  redirectUrl: 'http://localhost:3000/
+  redirectUrl: 'http://localhost:3000/,
+  audience: '{optional Audience}'
 }
