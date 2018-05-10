@@ -9,7 +9,7 @@ import { routerMiddleware } from 'react-router-redux';
 const history = createHistory({});
 // Build the middleware for intercepting and dispatching navigation actions
 const historyMiddleware = routerMiddleware(history);
-const middleware = applyMiddleware(thunk, logger, historyMiddleware);
+const middleware = applyMiddleware(logger, historyMiddleware);
 const store = createStore(reducers, composeWithDevTools(middleware));
 
 export { history as history };
