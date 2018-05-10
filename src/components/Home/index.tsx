@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { AuthedRouteProps } from '../Auth/Auth';
+import { AuthedRouteProps } from '../../Auth';
 
 class Home extends Component <AuthedRouteProps> {
   getExpiryDate() {

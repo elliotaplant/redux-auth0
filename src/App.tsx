@@ -1,9 +1,9 @@
 import React from 'react';
 import { Navbar, Button } from 'react-bootstrap';
 import { Route, Link } from 'react-router-dom';
-import Home from './Home';
-import Profile from './Profile';
-import { AuthedRouteProps } from './Auth/Auth';
+import Home from './components/Home';
+import Profile from './components/Profile';
+import { AuthedRouteProps } from './Auth';
 
 class App extends React.Component<AuthedRouteProps> {
 

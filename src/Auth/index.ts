@@ -122,17 +122,6 @@ class Auth {
       }, delay);
     }
   }
-
-  checkSSO(cb: (err: Auth0Error, result: Auth0DecodedHash) => void) {
-    this.auth0.checkSession({}, (err: Auth0Error, result: Auth0DecodedHash) => {
-      if (err) {
-        alert(`Could not get a new token (${err.error}: ${err.errorDescription}).`);
-      } else {
-        this.setSession(result);
-      }
-      cb(err, result);
-    });
-  }
 }
 
 export default Auth;

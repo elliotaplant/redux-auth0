@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Auth0UserProfile, Auth0Error } from 'auth0-js';
 import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
-import { AuthedRouteProps } from '../Auth/Auth';
+import { AuthedRouteProps } from '../../Auth';
 import './index.css';
 
 interface ProfileState {
