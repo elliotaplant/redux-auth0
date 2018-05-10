@@ -1,4 +1,5 @@
 import { applyMiddleware, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './reducers';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
@@ -10,7 +11,7 @@ const history = createHistory({});
 // Build the middleware for intercepting and dispatching navigation actions
 const historyMiddleware = routerMiddleware(history);
 const middleware = applyMiddleware(thunk, logger, historyMiddleware);
-const Store = createStore(reducers, middleware);
+const store = createStore(reducers, composeWithDevTools(middleware));
 
 export { history as history };
-export default Store;
+export default store;
