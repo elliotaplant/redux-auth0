@@ -1,25 +1,30 @@
 import React, { Component } from 'react';
+import { Auth0UserProfile, Auth0Error } from 'auth0-js';
 import { Panel, ControlLabel, Glyphicon } from 'react-bootstrap';
+import { AuthedRouteProps } from '../Auth/Auth';
 import './index.css';
 
-interface profileInterf{
-  profile:{
-    name:string,
-    picture:string,
-    nickname:string
-  },
-
+interface ProfileState {
+  profile: {
+    name: string;
+    picture: string;
+    nickname: string;
+  };
 }
-class Profile extends Component<any,profileInterf> {
+
+class Profile extends Component<AuthedRouteProps, ProfileState> {
   componentWillMount() {
-    this.setState({ profile: {
-      name:'',
-      picture:'',
-      nickname:''
-    } });
+    this.setState({
+      profile: {
+        name: '',
+        picture: '',
+        nickname: ''
+      }
+    });
+
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
-      getProfile((err:any, profile:any) => {
+      getProfile((err: Auth0Error, profile: Auth0UserProfile) => {
         this.setState({ profile });
       });
     } else {
